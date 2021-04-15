@@ -50,7 +50,7 @@ cat hg19.gtf NC_045512.2.gtf > hg19_NC_045512.2.gtf
 bwa index hg19_NC_045512.2.fa
 ```
 
-## running CIRI2 and circ-full pipeline (step-by-step)
+## running CIRI2 and circ-full pipeline
   
 ```Shell
 for i in SARS_CoV_2_Vero_E6_24h
@@ -58,9 +58,7 @@ do
 echo $i
 mkdir ${i}_hg19_SARS_CoV_2_output
 bwa mem -t 52 hg19_NC_045512.2.fa ${i}_1.fastq ${i}_2.fastq >${i}_hg19_SARS_CoV_2_output/${i}.sam
-echo ${i}_mapping_finished
 perl ~/CIRI2/CIRI_v2.0.6/CIRI2.pl -I ${i}_hg19_SARS_CoV_2_output/${i}.sam -O ${i}_hg19_SARS_CoV_2_output/${i}.ciri -F hg19_NC_045512.2.fa -A hg19_NC_045512.2.gtf -T 24
-echo ${i}_CircRNA identified
 ## Reconstructed SARS-CoV-2 circRNAs circ-full
 perl ~/CIRI2/CIRI_AS/CIRI_AS_v1.2.pl -S ${i}_hg19_SARS_CoV_2_output/${i}.sam -C ${i}_hg19_SARS_CoV_2_output/${i}.ciri -F hg19_NC_045512.2.fa -A hg19_NC_045512.2.gtf -O ${i}_hg19_SARS_CoV_2_output/${i} -D yes
 java -jar ~/CIRI2/CIRI-full_v2.0/CIRI-full.jar RO1 -1 ${i}_1.fastq -2 ${i}_2.fastq -o ${i}_hg19_SARS_CoV_2_output/${i}
