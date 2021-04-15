@@ -14,7 +14,7 @@ Circular RNAs (circRNAs) are a newly recognized component of the transcriptome w
 - 6.sratoolkit [https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software](https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software/)
 - 7.aspera [https://www.ibm.com/products/aspera](https://www.ibm.com/products/aspera/)
 
-##  Download SARS-CoV-2 infected RNA_seq data from ebi
+##  Download RNA_seq data (SARS-CoV-2-infected Vero E6 cells at 24 hours post-infection ,GSE153940) from ebi
 ```Shell
 for i in ftp.sra.ebi.ac.uk/vol1/srr/SRR121/098/SRR12164498 ftp.sra.ebi.ac.uk/vol1/srr/SRR121/099/SRR12164499 ftp.sra.ebi.ac.uk/vol1/srr/SRR121/000/SRR12164500
 do
@@ -39,17 +39,17 @@ cat ls SRR12164498_2.fastq SRR12164499_2.fastq SRR12164500_2.fastq > SARS_CoV_2_
 ```Shell
 rm SRR*
 ```
-## Generating genome contained human and SARS-CoV-2
+## Generating genome contained African green monkey and SARS-CoV-2
 
 ```Shell
-cat hg19.fa NC_045512.2.fasta > hg19_NC_045512.2.fa
-cat hg19.gtf NC_045512.2.gtf > hg19_NC_045512.2.gtf
+cat ChlSab1.1.101.fa NC_045512.2.fasta > ChlSab1.1.101_NC_045512.2.fa
+cat ChlSab1.1.101.gtf NC_045512.2.gtf > ChlSab1.1.101_NC_045512.2.gtf
 ```
 
 ## Build  BWA index
 
 ```Shell
-bwa index hg19_NC_045512.2.fa
+bwa index ChlSab1.1.101_NC_045512.2.fa
 ```
 
 ## running CIRI2 and circ-full pipeline
@@ -58,17 +58,17 @@ bwa index hg19_NC_045512.2.fa
 for i in SARS_CoV_2_Vero_E6_24h
 do
 echo $i
-mkdir ${i}_hg19_SARS_CoV_2_output
-bwa mem -t 52 hg19_NC_045512.2.fa ${i}_1.fastq ${i}_2.fastq >${i}_hg19_SARS_CoV_2_output/${i}.sam
-perl ~/CIRI2/CIRI_v2.0.6/CIRI2.pl -I ${i}_hg19_SARS_CoV_2_output/${i}.sam -O ${i}_hg19_SARS_CoV_2_output/${i}.ciri -F hg19_NC_045512.2.fa -A hg19_NC_045512.2.gtf -T 24
+mkdir ${i}_ChlSab1.1.101_SARS_CoV_2_output
+bwa mem -t 52 ChlSab1.1.101_NC_045512.2.fa ${i}_1.fastq ${i}_2.fastq >${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}.sam
+perl ~/CIRI2/CIRI_v2.0.6/CIRI2.pl -I ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}.sam -O ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}.ciri -F ChlSab1.1.101_NC_045512.2.fa -A ChlSab1.1.101_NC_045512.2.gtf -T 24
 ## Reconstructed SARS-CoV-2 circRNAs circ-full
-perl ~/CIRI2/CIRI_AS/CIRI_AS_v1.2.pl -S ${i}_hg19_SARS_CoV_2_output/${i}.sam -C ${i}_hg19_SARS_CoV_2_output/${i}.ciri -F hg19_NC_045512.2.fa -A hg19_NC_045512.2.gtf -O ${i}_hg19_SARS_CoV_2_output/${i} -D yes
-java -jar ~/CIRI2/CIRI-full_v2.0/CIRI-full.jar RO1 -1 ${i}_1.fastq -2 ${i}_2.fastq -o ${i}_hg19_SARS_CoV_2_output/${i}
-bwa mem -t 52 hg19_NC_045512.2.fa ${i}_hg19_SARS_CoV_2_output/${i}_ro1.fq > ${i}_hg19_SARS_CoV_2_output/${i}_ro1.sam
-java -jar ~/CIRI2/CIRI-full_v2.0/CIRI-full.jar RO2 -r hg19_NC_045512.2.fa -s ${i}_hg19_SARS_CoV_2_output/${i}_ro1.sam -l 300 -o ${i}_hg19_SARS_CoV_2_output/${i}RO2
-java -jar ~/CIRI2/CIRI-full_v2.0/CIRI-full.jar Merge -c ${i}_hg19_SARS_CoV_2_output/${i}.ciri -as ${i}_hg19_SARS_CoV_2_output/${i}_jav.list -ro ${i}_hg19_SARS_CoV_2_output/${i}RO2_ro2_info.list -a hg19_NC_045512.2.gtf -r hg19_NC_045512.2.fa -o ${i}_hg19_SARS_CoV_2_output/${i}
+perl ~/CIRI2/CIRI_AS/CIRI_AS_v1.2.pl -S ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}.sam -C ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}.ciri -F ChlSab1.1.101_NC_045512.2.fa -A ChlSab1.1.101_NC_045512.2.gtf -O ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i} -D yes
+java -jar ~/CIRI2/CIRI-full_v2.0/CIRI-full.jar RO1 -1 ${i}_1.fastq -2 ${i}_2.fastq -o ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}
+bwa mem -t 52 ChlSab1.1.101_NC_045512.2.fa ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}_ro1.fq > ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}_ro1.sam
+java -jar ~/CIRI2/CIRI-full_v2.0/CIRI-full.jar RO2 -r ChlSab1.1.101_NC_045512.2.fa -s ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}_ro1.sam -l 300 -o ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}RO2
+java -jar ~/CIRI2/CIRI-full_v2.0/CIRI-full.jar Merge -c ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}.ciri -as ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}_jav.list -ro ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}RO2_ro2_info.list -a ChlSab1.1.101_NC_045512.2.gtf -r ChlSab1.1.101_NC_045512.2.fa -o ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}
 unset DISPLAY
-java -jar ~/CIRI2/CIRI_vis/CIRI-vis_v1.4.jar -i ${i}_hg19_SARS_CoV_2_output/${i}_merge_circRNA_detail.anno -l ${i}_hg19_SARS_CoV_2_output/${i}_library_length.list -r hg19_NC_045512.2.fa -min 1
+java -jar ~/CIRI2/CIRI_vis/CIRI-vis_v1.4.jar -i ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}_merge_circRNA_detail.anno -l ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}_library_length.list -r ChlSab1.1.101_NC_045512.2.fa -min 1
 echo ${i}_CircRNA_full_finished
 done
   
@@ -79,11 +79,11 @@ done
 for i in SARS_CoV_2_Vero_E6_24h
 do
 echo $i
-samtools view -bS ${i}_hg19_SARS_CoV_2_output/${i}.sam > ${i}_hg19_SARS_CoV_2_output/${i}.bam
-rm ${i}_hg19_SARS_CoV_2_output/${i}.sam
-samtools sort ${i}_hg19_SARS_CoV_2_output/${i}.bam -o ${i}_hg19_SARS_CoV_2_output/${i}_sorted.bam -@ 42
-qualimap bamqc -bam ${i}_hg19_SARS_CoV_2_output/${i}_sorted.bam -oc count.matrix -outdir ${i}_hg19_SARS_CoV_2_output/${i}_bamqc -outformat PDF:HTML --java-mem-size=50G
-rm ${i}_hg19_SARS_CoV_2_output/${i}.bam
+samtools view -bS ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}.sam > ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}.bam
+rm ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}.sam
+samtools sort ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}.bam -o ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}_sorted.bam -@ 42
+qualimap bamqc -bam ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}_sorted.bam -oc count.matrix -outdir ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}_bamqc -outformat PDF:HTML --java-mem-size=50G
+rm ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}.bam
 done
 ```
 
