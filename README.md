@@ -14,7 +14,7 @@ Circular RNAs (circRNAs) are a newly recognized component of the transcriptome w
 - 6.sratoolkit [https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software](https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software/)
 - 7.aspera [https://www.ibm.com/products/aspera](https://www.ibm.com/products/aspera/)
 
-##  Download SARS CoV 2 infected RNA_seq data from ebi
+##  Download SARS-CoV-2 infected RNA_seq data from ebi
 ```Shell
 for i in ftp.sra.ebi.ac.uk/vol1/srr/SRR121/098/SRR12164498 ftp.sra.ebi.ac.uk/vol1/srr/SRR121/099/SRR12164499 ftp.sra.ebi.ac.uk/vol1/srr/SRR121/000/SRR12164500
 do
@@ -28,7 +28,9 @@ done
 
 ```Shell
 fasterq-dump --split-3 SRR* -e 16 -p
-#pooling all samples together
+```
+## pooling all samples together
+```Shell
 cat ls SRR12164498_1.fastq SRR12164499_1.fastq SRR12164500_1.fastq > SARS_CoV_2_Vero_E6_24h_1.fastq
 cat ls SRR12164498_2.fastq SRR12164499_2.fastq SRR12164500_2.fastq > SARS_CoV_2_Vero_E6_24h_2.fastq
 ```
