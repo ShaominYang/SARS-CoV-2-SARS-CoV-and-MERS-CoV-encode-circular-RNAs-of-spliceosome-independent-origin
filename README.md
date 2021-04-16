@@ -14,7 +14,7 @@ Circular RNAs (circRNAs) are a newly recognized component of the transcriptome w
 - 7.aspera [https://www.ibm.com/products/aspera](https://www.ibm.com/products/aspera/)
 
 # Preparing Data 
-##  Download RNA_seq data (SARS-CoV-2-infected Vero E6 cells at 24 hours post-infection ,GSE153940) from ebi
+##  Download RNA_seq data (SARS-CoV-2-infected Vero E6 cells at 24 hours post-infection ,PRJNA644588) from ebi
 ```Shell
 for i in ftp.sra.ebi.ac.uk/vol1/srr/SRR121/098/SRR12164498 ftp.sra.ebi.ac.uk/vol1/srr/SRR121/099/SRR12164499 ftp.sra.ebi.ac.uk/vol1/srr/SRR121/000/SRR12164500
 do
