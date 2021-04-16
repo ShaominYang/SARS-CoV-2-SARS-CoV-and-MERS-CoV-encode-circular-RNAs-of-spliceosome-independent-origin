@@ -13,7 +13,8 @@ Circular RNAs (circRNAs) are a newly recognized component of the transcriptome w
 - 6.sratoolkit [https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software](https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software/)
 - 7.aspera [https://www.ibm.com/products/aspera](https://www.ibm.com/products/aspera/)
 
-#  Download RNA_seq data (SARS-CoV-2-infected Vero E6 cells at 24 hours post-infection ,GSE153940) from ebi
+# Preparing Data 
+##  Download RNA_seq data (SARS-CoV-2-infected Vero E6 cells at 24 hours post-infection ,GSE153940) from ebi
 ```Shell
 for i in ftp.sra.ebi.ac.uk/vol1/srr/SRR121/098/SRR12164498 ftp.sra.ebi.ac.uk/vol1/srr/SRR121/099/SRR12164499 ftp.sra.ebi.ac.uk/vol1/srr/SRR121/000/SRR12164500
 do
@@ -23,12 +24,12 @@ ascp -QT -l 300m -P33001 \
 era-fasp@fasp.sra.ebi.ac.uk:/${i} .
 done
 ```
-## multi-threading to speed up the extraction of fastq from SRA-accessions
+## Multi-threading to speed up the extraction of fastq from SRA-accessions
 
 ```Shell
 fasterq-dump --split-3 SRR* -e 16 -p
 ```
-## pooling all samples together
+## Pooling all samples together
 ```Shell
 cat SRR12164498_1.fastq SRR12164499_1.fastq SRR12164500_1.fastq > SARS_CoV_2_Vero_E6_24h_1.fastq
 cat SRR12164498_2.fastq SRR12164499_2.fastq SRR12164500_2.fastq > SARS_CoV_2_Vero_E6_24h_2.fastq
@@ -38,6 +39,7 @@ cat SRR12164498_2.fastq SRR12164499_2.fastq SRR12164500_2.fastq > SARS_CoV_2_Ver
 ```Shell
 rm SRR*
 ```
+
 # Generating genome contained African green monkey and SARS-CoV-2
 
 ```Shell
@@ -51,7 +53,7 @@ cat ChlSab1.1.101.gtf NC_045512.2.gtf > ChlSab1.1.101_NC_045512.2.gtf
 bwa index ChlSab1.1.101_NC_045512.2.fa
 ```
 
-# running CIRI2 and circ-full pipeline
+# Running CIRI2 and circ-full pipeline
   
 ```Shell
 for i in SARS_CoV_2_Vero_E6_24h
@@ -71,7 +73,7 @@ java -jar ~/CIRI2/CIRI_vis/CIRI-vis_v1.4.jar -i ${i}_ChlSab1.1.101_SARS_CoV_2_ou
 done
   
 ```
-# running mapping statistics pipeline
+# Running mapping statistics pipeline
 
 ```Shell
 for i in SARS_CoV_2_Vero_E6_24h
