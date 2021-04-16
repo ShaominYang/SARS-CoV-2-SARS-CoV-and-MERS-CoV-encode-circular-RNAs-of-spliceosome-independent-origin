@@ -14,7 +14,7 @@ Circular RNAs (circRNAs) are a newly recognized component of the transcriptome w
 - 6.sratoolkit [https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software](https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software/)
 - 7.aspera [https://www.ibm.com/products/aspera](https://www.ibm.com/products/aspera/)
 
-##  Download RNA_seq data (SARS-CoV-2-infected Vero E6 cells at 24 hours post-infection ,GSE153940) from ebi
+#  Download RNA_seq data (SARS-CoV-2-infected Vero E6 cells at 24 hours post-infection ,GSE153940) from ebi
 ```Shell
 for i in ftp.sra.ebi.ac.uk/vol1/srr/SRR121/098/SRR12164498 ftp.sra.ebi.ac.uk/vol1/srr/SRR121/099/SRR12164499 ftp.sra.ebi.ac.uk/vol1/srr/SRR121/000/SRR12164500
 do
@@ -39,20 +39,20 @@ cat SRR12164498_2.fastq SRR12164499_2.fastq SRR12164500_2.fastq > SARS_CoV_2_Ver
 ```Shell
 rm SRR*
 ```
-## Generating genome contained African green monkey and SARS-CoV-2
+# Generating genome contained African green monkey and SARS-CoV-2
 
 ```Shell
 cat ChlSab1.1.101.fa NC_045512.2.fasta > ChlSab1.1.101_NC_045512.2.fa
 cat ChlSab1.1.101.gtf NC_045512.2.gtf > ChlSab1.1.101_NC_045512.2.gtf
 ```
 
-## Build  BWA index
+# Build  BWA index
 
 ```Shell
 bwa index ChlSab1.1.101_NC_045512.2.fa
 ```
 
-## running CIRI2 and circ-full pipeline
+# running CIRI2 and circ-full pipeline
   
 ```Shell
 for i in SARS_CoV_2_Vero_E6_24h
@@ -69,7 +69,6 @@ java -jar ~/CIRI2/CIRI-full_v2.0/CIRI-full.jar RO2 -r ChlSab1.1.101_NC_045512.2.
 java -jar ~/CIRI2/CIRI-full_v2.0/CIRI-full.jar Merge -c ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}.ciri -as ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}_jav.list -ro ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}RO2_ro2_info.list -a ChlSab1.1.101_NC_045512.2.gtf -r ChlSab1.1.101_NC_045512.2.fa -o ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}
 unset DISPLAY
 java -jar ~/CIRI2/CIRI_vis/CIRI-vis_v1.4.jar -i ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}_merge_circRNA_detail.anno -l ${i}_ChlSab1.1.101_SARS_CoV_2_output/${i}_library_length.list -r ChlSab1.1.101_NC_045512.2.fa -min 1
-echo ${i}_CircRNA_full_finished
 done
   
 ```
