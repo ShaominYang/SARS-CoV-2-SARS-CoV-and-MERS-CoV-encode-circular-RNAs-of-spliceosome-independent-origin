@@ -34,7 +34,7 @@ fasterq-dump --split-3 SRR* -e 16 -p
 cat SRR12164498_1.fastq SRR12164499_1.fastq SRR12164500_1.fastq > SARS_CoV_2_Vero_E6_24h_1.fastq
 cat SRR12164498_2.fastq SRR12164499_2.fastq SRR12164500_2.fastq > SARS_CoV_2_Vero_E6_24h_2.fastq
 ```
-## remove all SRR files
+## Remove all SRR files
 
 ```Shell
 rm SRR*
