@@ -12,7 +12,7 @@ Circular RNAs (circRNAs) are a newly recognized component of the transcriptome w
 - 5.SAMtools [http://www.htslib.org/](http://www.htslib.org/)
 - 6.sratoolkit [https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software](https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software/)
 - 7.aspera [https://www.ibm.com/products/aspera](https://www.ibm.com/products/aspera/)
-
+- 8.Qualimap [http://qualimap.conesalab.org/](http://qualimap.conesalab.org/)
 # Preparing Data 
 ##  Download RNA_seq data (SARS-CoV-2-infected Vero E6 cells at 24 hours post-infection ,PRJNA644588) from ebi
 ```Shell
