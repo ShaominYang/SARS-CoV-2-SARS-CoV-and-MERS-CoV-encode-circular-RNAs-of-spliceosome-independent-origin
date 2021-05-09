@@ -52,7 +52,7 @@ cat ChlSab1.1.101.gtf NC_045512.2.gtf > ChlSab1.1.101_NC_045512.2.gtf
 ```Shell
 bwa index ChlSab1.1.101_NC_045512.2.fa
 ```
-![image](https://github.com/ShaominYang/Core-for-SARS-CoV-2-SARS-CoV-and-MERS-CoV-encode-a-novel-type-of-circular-RNA/blob/main/Illustration%20of%20CIRI2-based%20identification%20of%20circRNAs.jpg)
+![image](https://github.com/ShaominYang/Core-for-SARS-CoV-2-SARS-CoV-and-MERS-CoV-encode-a-novel-type-of-circular-RNA/blob/main/Illustration.jpg)
 ### <p align="center"> Illustration of CIRI2-based identification of circRNAs </p>
 # Running CIRI2 and circ-full pipeline
   
