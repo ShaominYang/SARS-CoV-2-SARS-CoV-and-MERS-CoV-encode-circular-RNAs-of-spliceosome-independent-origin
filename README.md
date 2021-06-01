@@ -1,5 +1,5 @@
 
-# Core for "SARS-CoV-2, SARS-CoV and MERS-CoV encode a novel type of circular RNA"
+# Core for "SARS-CoV-2, SARS-CoV and MERS-CoV encode circular RNAs of spliceosome-independent origin"
 
 Circular RNAs (circRNAs) are a newly recognized component of the transcriptome with critical roles in autoimmune diseases and viral pathogenesis. To address importance of circRNA in RNA viral transcriptome, we systematically identified and characterized circRNAs encoded by the RNA genomes of betacoronaviruses using bioinformatical and experimental approaches. We predicted 351, 224 and 2,764 circRNAs derived from SARS-CoV-2, SARS-CoV and MERS-CoV, respectively, and experimentally identified 75 SARS-CoV-2 circRNAs. 
 
