@@ -1,0 +1,15 @@
+[Thu Jul 23 08:23:48 2020] CIRI begins running
+[Thu Jul 23 08:23:48 2020] Loading reference
+[Thu Jul 23 08:23:48 2020] Requesting system to split SAM into 24 pieces
+[Thu Jul 23 10:21:27 2020] First scanning
+ Candidate reads with splicing signals: 91
+ Candidate reads with PEM signals: 89
+ Candidate circRNAs found: 46
+[Thu Jul 23 11:51:14 2020] Second scanning
+[Thu Jul 23 14:30:11 2020] Extracting info from temporary files
+ Additional candidate reads found: 8653
+ Additional candidate reads with PEM signals: 8450
+[Thu Jul 23 14:41:48 2020] Summarizing
+ Number of circular RNAs found: 28
+[Thu Jul 23 14:42:04 2020] CIRI finished its work. Please see output file SRR12164498_output/SRR12164498.ciri for detail.
+--------------------------------------------------------------------------------
