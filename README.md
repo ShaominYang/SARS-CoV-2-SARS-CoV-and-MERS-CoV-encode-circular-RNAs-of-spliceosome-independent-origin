@@ -97,7 +97,7 @@ done
 # Citations
 
 
->1.  Yang S, Zhou H, Cruz-Cosme R, Liu M, Xu J, Niu X, Li Y, Xiao L, Wang Q, Zhu H, Tang Q. Circular RNA profiling reveals abundant and diverse circRNAs of SARS-CoV-2, SARS-CoV and MERS-CoV origin. bioRxiv [Preprint]. 2020 Dec 8:2020.12.07.415422. doi: 10.1101/2020.12.07.415422. PMID: 33330860; PMCID: PMC7743059.
+>1. Yang S, Zhou H, Liu M, et al. SARSCoV‐2, SARS‐CoV, and MERS‐CoV encode circular RNAs of spliceosome‐independent origin. J Med Virol. 2022;1‐20. doi:10.1002/jmv.27734
 >2.  Yuan Gao†, Jinfeng Wang† and Fangqing Zhao*. CIRI: an efficient and unbiased algorithm for de novo circular RNA identification. Genome Biology (2015) 16:4.
 >3.  Yuan Gao, Jinyang Zhang and Fangqing Zhao*. Circular RNA identification based on multiple seed matching. Briefings in Bioinformatics (2017) DOI: 10.1093/bib/bbx014.
 
